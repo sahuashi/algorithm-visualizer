@@ -1,10 +1,17 @@
-import './App.css';
+import "./App.css";
+import "@fontsource/roboto";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-   <div>
-     <h1>Algorithm Visualizer</h1>
-   </div>
+    <Container maxWidth="md">
+      <Typography variant="h3" gutterBottom align="center">
+        Algorithm Visualizer
+      </Typography>
+      <Sidebar />
+    </Container>
   );
 }
 
