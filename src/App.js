@@ -7,9 +7,6 @@ import Sidebar from "./components/Sidebar";
 function App() {
   return (
     <Container maxWidth="md">
-      <Typography variant="h3" gutterBottom align="center">
-        Algorithm Visualizer
-      </Typography>
       <Sidebar />
     </Container>
   );
