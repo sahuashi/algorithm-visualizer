@@ -6,6 +6,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
 export default class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    console.log("sidebar");
+  }
+  
   render() {
     return (
       <Drawer variant="permanent" anchor="left" className="drawer">

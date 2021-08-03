@@ -14,3 +14,8 @@
   height: 100vh;
   overflow: auto;
 }
+
+.bar {
+  border-left: 6px solid green;
+  display: inline-flex;
+}
