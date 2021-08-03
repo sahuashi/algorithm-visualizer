@@ -7,17 +7,20 @@ import Visualizer from "./components/Visualizer/Visualizer";
 import { useState } from 'react';
 import randomizeArray from './helpers/Randomizer';
 import bubbleSort from "./algorithms/bubble-sort";
+import insertionSort from "./algorithms/insertion-sort";
+import mergeSort from "./algorithms/merge-sort";
+import selectionSort from "./algorithms/selection-sort";
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] =  useState("Bubble Sort");
   const [array, setArray] = useState(randomizeArray());
-  const algorithms = [
-    "Bubble Sort",
-    "Insertion Sort",
-    "Merge Sort",
-    "Quick Sort",
-    "Insertion Sort"
-  ]
+  const algorithms = {
+    "Bubble Sort": bubbleSort,
+    "Insertion Sort": insertionSort,
+    "Merge Sort": mergeSort,
+    "Quick Sort": bubbleSort, //temp,
+    "Selection Sort": selectionSort
+  }
 
   const randomize = () => {
     let arr = randomizeArray();
@@ -25,7 +28,7 @@ function App() {
   }
 
   const sort = () => {
-    let arr = [...bubbleSort(array)];
+    let arr = [...algorithms[selectedAlgorithm](array)];
     setArray(arr);
   }
 

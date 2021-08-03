@@ -23,7 +23,7 @@ export default class Sidebar extends Component {
               Sorting Algorithms
             </ListItemText>
           </ListItem>
-          {this.props.algorithms.map((algo, index) => (
+          {Object.keys(this.props.algorithms).map((algo, index) => (
             <ListItem key={index} button onClick={() => this.props.setSelectedAlgorithm(algo)}>
               <ListItemText>{algo}</ListItemText>
             </ListItem>
