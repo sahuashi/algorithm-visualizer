@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default class ElementBar extends Component {
     constructor(props) {
@@ -15,7 +16,9 @@ export default class ElementBar extends Component {
     render() {
         let color = this.props.isSorted? "green" : this.state.color;
         return (
-            <div className="bar" style={{height: `${this.props.height}px`, borderLeftColor: `${color}`}}/>
+            <Tooltip title={this.props.height}>
+                <div className="bar" style={{height: `${this.props.height}px`, borderLeftColor: `${color}`}}/>
+            </Tooltip>
         )
     }
 }
