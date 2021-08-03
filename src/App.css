@@ -16,6 +16,8 @@
 }
 
 .bar {
-  border-left: 6px solid green;
+  border-left: 10px solid;
   display: inline-flex;
+  margin-left: 1px;
+  width: 0.75%
 }

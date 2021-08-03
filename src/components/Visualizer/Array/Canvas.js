@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
+import ElementBar from "./ElementBar";
 
 export default class Canvas extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class Canvas extends Component {
       <Box p={5}>
         <Paper elevation={3} variant="outlined">
           {this.props.array.map((number, index) => (
-            <div key={index} className="bar" style={{height: `${number}px`}}/>
+            <ElementBar key={index} height={number} color='blue'/>
           ))}
         </Paper>
       </Box>

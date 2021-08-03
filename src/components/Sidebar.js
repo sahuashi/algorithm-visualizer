@@ -23,21 +23,11 @@ export default class Sidebar extends Component {
               Sorting Algorithms
             </ListItemText>
           </ListItem>
-          <ListItem button>
-            <ListItemText>Bubble Sort</ListItemText>
-          </ListItem>
-          <ListItem button>
-            <ListItemText>Insertion Sort</ListItemText>
-          </ListItem>
-          <ListItem button>
-            <ListItemText>Merge Sort</ListItemText>
-          </ListItem>
-          <ListItem button>
-            <ListItemText>Quick Sort</ListItemText>
-          </ListItem>
-          <ListItem button>
-            <ListItemText>Selection Sort</ListItemText>
-          </ListItem>
+          {this.props.algorithms.map((algo, index) => (
+            <ListItem key={index} button onClick={() => this.props.setSelectedAlgorithm(algo)}>
+              <ListItemText>{algo}</ListItemText>
+            </ListItem>
+          ))}
         </List>
       </Drawer>
     );

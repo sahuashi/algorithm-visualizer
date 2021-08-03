@@ -11,6 +11,9 @@ export default class SettingsBar extends Component {
         <Button variant="contained" color="primary" onClick={this.props.randomize}>
           Randomize Array
         </Button>
+        <Button variant="outlined" color="primary" onClick={this.props.sort}>
+          Start Sorting
+        </Button>
         </Paper>
       </Box>
     );
