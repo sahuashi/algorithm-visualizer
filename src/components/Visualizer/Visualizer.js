@@ -14,7 +14,7 @@ export default class Visualizer extends Component {
     return (
       <Grid className="main-panel">
         <Typography variant="h4">{this.props.selectedAlgorithm}</Typography>
-        <Canvas array={this.props.array}/>
+        <Canvas array={this.props.array} isSorted={this.props.isSorted}/>
         <SettingsBar randomize={this.props.randomize} sort={this.props.sort}/>
       </Grid>
     );

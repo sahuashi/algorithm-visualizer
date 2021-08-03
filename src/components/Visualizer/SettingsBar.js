@@ -12,7 +12,7 @@ export default class SettingsBar extends Component {
           Randomize Array
         </Button>
         <Button variant="outlined" color="primary" onClick={this.props.sort}>
-          Start Sorting
+          Sort
         </Button>
         </Paper>
       </Box>

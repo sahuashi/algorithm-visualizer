@@ -4,7 +4,6 @@ export default class ElementBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSorted: false,
             color: this.generateRandomColor()
         }
     }
@@ -14,8 +13,9 @@ export default class ElementBar extends Component {
     }
 
     render() {
+        let color = this.props.isSorted? "green" : this.state.color;
         return (
-            <div className="bar" style={{height: `${this.props.height}px`, borderLeftColor: `${this.state.color}`}}/>
+            <div className="bar" style={{height: `${this.props.height}px`, borderLeftColor: `${color}`}}/>
         )
     }
 }

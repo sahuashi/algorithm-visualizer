@@ -13,7 +13,7 @@ export default class Canvas extends Component {
       <Box p={5}>
         <Paper elevation={3} variant="outlined">
           {this.props.array.map((number, index) => (
-            <ElementBar key={index} height={number} color='blue'/>
+            <ElementBar key={index} height={number} isSorted = {this.props.isSorted}/>
           ))}
         </Paper>
       </Box>
