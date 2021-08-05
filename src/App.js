@@ -31,19 +31,18 @@ function App() {
   }
 
   const sort = () => {
-    let sorted = bubbleSort(array);
-    let iteration = sorted.next();
-    while(iteration.done !== "true" && iteration.value){
+    let sorting = algorithms[selectedAlgorithm](array);
+    let iteration = sorting.next();
+    var updateAnimation = setInterval(() => {
       let arr = [...iteration.value];
       console.log(iteration.value);
       setArray(arr);
-      //setTimeout(()=>{}, 3000);
-      iteration = sorted.next();
-    }
-    console.log(iteration);
-    //arr.forEach((el) => console.log("yield: " + el));
-    //let arr = [...algorithms[selectedAlgorithm](array)];
-    //setIsSorted(true);
+      iteration = sorting.next();
+      if (iteration.done === "true" || !iteration.value){
+        clearInterval(updateAnimation);
+        setIsSorted(true);
+      }
+    }, 500);
   }
 
   return (

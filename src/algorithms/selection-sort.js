@@ -1,4 +1,4 @@
-const selectionSort = (arr) => {
+function* selectionSort(arr) {
     for (let i = 0; i < arr.length - 1; i++) {
         let min = i;
         for (let j = i + 1; j < arr.length; j++) {
@@ -8,6 +8,7 @@ const selectionSort = (arr) => {
         }
 
         [arr[min], arr[i]] = [arr[i], arr[min]];
+        yield arr;
     }
     return arr;
 }
