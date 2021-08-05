@@ -10,6 +10,7 @@ import bubbleSort from "./algorithms/bubble-sort";
 import insertionSort from "./algorithms/insertion-sort";
 import mergeSort from "./algorithms/merge-sort";
 import selectionSort from "./algorithms/selection-sort";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] =  useState("Bubble Sort");
@@ -24,6 +25,21 @@ function App() {
     "Quick Sort": bubbleSort, //temp,
     "Selection Sort": selectionSort
   }
+
+  const theme = createTheme({
+    typography: {
+      h4: {
+        fontFamily: 'Poppins',
+        fontWeight:'200'
+      },
+      body2: {
+        fontFamily: 'Poppins'
+      },
+      button: {
+        fontFamily: 'Work Sans',
+        textTransform: 'none'
+      }
+  }});
 
   const randomize = () => {
     let arr = randomizeArray();
@@ -49,11 +65,13 @@ function App() {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm} />
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
       sort={sort} isSorting={isSorting} isSorted={isSorted}/>
     </Container>
+    </ThemeProvider>
   );
 }
 
