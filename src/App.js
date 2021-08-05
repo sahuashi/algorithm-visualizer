@@ -31,9 +31,19 @@ function App() {
   }
 
   const sort = () => {
-    let arr = [...algorithms[selectedAlgorithm](array)];
-    setIsSorted(true);
-    setArray(arr);
+    let sorted = bubbleSort(array);
+    let iteration = sorted.next();
+    while(iteration.done !== "true" && iteration.value){
+      let arr = [...iteration.value];
+      console.log(iteration.value);
+      setArray(arr);
+      //setTimeout(()=>{}, 3000);
+      iteration = sorted.next();
+    }
+    console.log(iteration);
+    //arr.forEach((el) => console.log("yield: " + el));
+    //let arr = [...algorithms[selectedAlgorithm](array)];
+    //setIsSorted(true);
   }
 
   return (
