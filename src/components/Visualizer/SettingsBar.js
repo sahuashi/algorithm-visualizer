@@ -5,15 +5,16 @@ import Button from "@material-ui/core/Button";
 
 export default class SettingsBar extends Component {
   render() {
+    let sortButton = this.props.isSorting? 
+    <Button className="button" variant="contained" disabled>Sorting in Progress</Button> 
+    : <Button className="button" variant="contained" onClick={this.props.sort}>Sort</Button>
     return (
       <Box p={5}>
         <Paper elevation={3} variant="outlined">
         <Button className="button" variant="contained" color="primary" onClick={this.props.randomize}>
           Randomize Array
         </Button>
-        <Button className="button" variant="outlined" color="primary" onClick={this.props.sort}>
-          Sort
-        </Button>
+        {sortButton}
         </Paper>
       </Box>
     );

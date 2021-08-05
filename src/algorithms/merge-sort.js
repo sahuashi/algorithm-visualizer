@@ -1,4 +1,4 @@
-const mergeSort = (arr) => {
+function* mergeSort(arr) {
     if (arr.length > 1) {
         var A = [], B = [];
         var midpoint = Math.floor(arr.length / 2);
@@ -11,9 +11,9 @@ const mergeSort = (arr) => {
             B.push(arr[i]);
         }
 
-        mergeSort(A);
-        mergeSort(B);
-        merge(A, B, arr);
+        yield* mergeSort(A);
+        yield* mergeSort(B);
+        yield merge(A, B, arr);
     }
     return arr;
 }
@@ -44,6 +44,7 @@ const merge = (A, B, arr) => {
             k++;
         }
     }
+    return arr;
 }
 
 export default mergeSort;

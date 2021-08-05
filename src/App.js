@@ -14,6 +14,7 @@ import selectionSort from "./algorithms/selection-sort";
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] =  useState("Bubble Sort");
   const [array, setArray] = useState(randomizeArray());
+  const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
 
   const algorithms = {
@@ -31,6 +32,7 @@ function App() {
   }
 
   const sort = () => {
+    setIsSorting(true);
     let sorting = algorithms[selectedAlgorithm](array);
     let iteration = sorting.next();
     var updateAnimation = setInterval(() => {
@@ -40,6 +42,7 @@ function App() {
       iteration = sorting.next();
       if (iteration.done === "true" || !iteration.value){
         clearInterval(updateAnimation);
+        setIsSorting(false);
         setIsSorted(true);
       }
     }, 500);
@@ -48,7 +51,8 @@ function App() {
   return (
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm} />
-      <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} sort={sort} isSorted={isSorted}/>
+      <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
+      sort={sort} isSorting={isSorting} isSorted={isSorted}/>
     </Container>
   );
 }
