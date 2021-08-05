@@ -1,4 +1,4 @@
-const NUM_ELEMENTS = 50;
+const NUM_ELEMENTS = 20;
 const MAX_NUMBER = 250;
 
 const randomizeArray = () => {

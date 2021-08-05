@@ -18,10 +18,10 @@
 }
 
 .bar {
-  border-left: 10px solid;
+  width: 10px;
   display: inline-flex;
   margin-left: 1px;
-  width: 0.75%
+  border-radius: 10%;
 }
 
 .button {

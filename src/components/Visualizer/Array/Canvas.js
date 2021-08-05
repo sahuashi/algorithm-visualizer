@@ -10,8 +10,8 @@ export default class Canvas extends Component {
   }
   render() {
     return (
-      <Box p={5}>
-        <Paper elevation={3} variant="outlined">
+      <Box p={5} mx='auto' width={1/3}>
+        <Paper elevation={0} >
           {this.props.array.map((number, index) => (
             <ElementBar key={index} height={number} isSorted = {this.props.isSorted}/>
           ))}

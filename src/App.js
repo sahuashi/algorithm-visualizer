@@ -61,7 +61,7 @@ function App() {
         setIsSorting(false);
         setIsSorted(true);
       }
-    }, 500);
+    }, 200);
   }
 
   return (
