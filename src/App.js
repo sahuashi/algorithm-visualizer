@@ -9,6 +9,7 @@ import randomizeArray from './helpers/Randomizer';
 import bubbleSort from "./algorithms/bubble-sort";
 import insertionSort from "./algorithms/insertion-sort";
 import mergeSort from "./algorithms/merge-sort";
+import quickSort from "./algorithms/quick-sort";
 import selectionSort from "./algorithms/selection-sort";
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -23,7 +24,7 @@ function App() {
     "Bubble Sort": bubbleSort,
     "Insertion Sort": insertionSort,
     "Merge Sort": mergeSort,
-    "Quick Sort": bubbleSort, //temp,
+    "Quick Sort": quickSort,
     "Selection Sort": selectionSort
   }
 
