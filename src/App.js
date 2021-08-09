@@ -50,7 +50,7 @@ function App() {
 
   const sort = () => {
     setIsSorting(true);
-    let sorting = algorithms[selectedAlgorithm](array);
+    let sorting = algorithms[selectedAlgorithm](array, 0, array.length-1);
     let iteration = sorting.next();
     updateAnimation = setInterval(() => {
       let arr = [...iteration.value];

@@ -1,50 +1,43 @@
-function* mergeSort(arr) {
-    if (arr.length > 1) {
-        var A = [], B = [];
-        var midpoint = Math.floor(arr.length / 2);
-
-        for (let i = 0; i < midpoint; i++) {
-            A.push(arr[i]);
-        }
-
-        for (let i = midpoint; i < arr.length; i++) {
-            B.push(arr[i]);
-        }
-
-        yield* mergeSort(A);
-        yield* mergeSort(B);
-        yield merge(A, B, arr);
+function* mergeSort(arr, start, end) {
+    if (end > start) {
+        var midpoint = start + Math.floor((end - start + 1) / 2) - 1;
+        yield* mergeSort(arr, start, midpoint);
+        yield* mergeSort(arr, midpoint + 1, end);
+        yield* merge(arr, start, midpoint, end);
     }
-    return arr;
 }
 
-const merge = (A, B, arr) => {
-    let i = 0, j = 0, k = 0;
-    while (i < A.length && j < B.length) {
-        if (A[i] <= B[j]) {
-            arr[k] = A[i];
-            i++;
+function* merge(arr, start, midpoint, end) {
+    var merged = [];
+    var left = start;
+    var right = midpoint + 1;
+
+    while (left <= midpoint && right <= end) {
+        if (arr[left] < arr[right]) {
+            merged.push(arr[left]);
+            left++;
         }
         else {
-            arr[k] = B[j];
-            j++;
+            merged.push(arr[right]);
+            right++;
         }
-        k++;
     }
 
-    if (i === A.length) {
-        for (let x = j; x < B.length; x++) {
-            arr[k] = B[x];
-            k++;
-        }
+    while (left <= midpoint) {
+        merged.push(arr[left]);
+        left++;
     }
-    else {
-        for (let x = i; x < A.length; x++) {
-            arr[k] = A[x];
-            k++;
-        }
+
+    while (right <= end) {
+        merged.push(arr[right]);
+        right++;
     }
-    return arr;
+
+    for (let i = 0; i < merged.length; i++) {
+        arr[start + i] = merged[i];
+    }
+
+    yield arr;
 }
 
 export default mergeSort;
