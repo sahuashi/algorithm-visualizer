@@ -63,7 +63,7 @@ function App() {
         setIsSorting(false);
         setIsSorted(true);
       }
-    }, 200);
+    }, 100);
   }
 
   const stop = () => {
