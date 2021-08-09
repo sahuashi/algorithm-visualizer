@@ -17,6 +17,7 @@ function App() {
   const [array, setArray] = useState(randomizeArray());
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
+  var updateAnimation;
 
   const algorithms = {
     "Bubble Sort": bubbleSort,
@@ -51,12 +52,12 @@ function App() {
     setIsSorting(true);
     let sorting = algorithms[selectedAlgorithm](array);
     let iteration = sorting.next();
-    var updateAnimation = setInterval(() => {
+    updateAnimation = setInterval(() => {
       let arr = [...iteration.value];
       console.log(iteration.value);
       setArray(arr);
       iteration = sorting.next();
-      if (iteration.done === "true" || !iteration.value){
+      if (iteration.done === "true" || !iteration.value) {
         clearInterval(updateAnimation);
         setIsSorting(false);
         setIsSorted(true);
@@ -64,12 +65,18 @@ function App() {
     }, 200);
   }
 
+  const stop = () => {
+    console.log("ID: " + updateAnimation);
+    clearInterval(updateAnimation);
+  }
+
+
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm} />
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
-      sort={sort} isSorting={isSorting} isSorted={isSorted}/>
+      sort={sort} isSorting={isSorting} isSorted={isSorted} stop={stop}/>
     </Container>
     </ThemeProvider>
   );

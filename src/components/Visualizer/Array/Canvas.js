@@ -13,7 +13,7 @@ export default class Canvas extends Component {
       <Box p={5} mx='auto' width={1/3}>
         <Paper elevation={0} >
           {this.props.array.map((number, index) => (
-            <ElementBar key={index} height={number} isSorted = {this.props.isSorted}/>
+            <ElementBar key={number+(Math.random() * 5)} height={number} isSorted={this.props.isSorted}/>
           ))}
         </Paper>
       </Box>

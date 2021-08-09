@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 export default class SettingsBar extends Component {
   render() {
     let sortButton = this.props.isSorting? 
-    <Button className="button" variant="contained" disabled>Stop</Button> 
+    <Button className="button" variant="contained" onClick={this.props.stop}>Stop</Button> 
     : <Button className="button" variant="contained" onClick={this.props.sort}>Sort</Button>
     return (
       <Box p={5} mx="auto" width={1/3}>
