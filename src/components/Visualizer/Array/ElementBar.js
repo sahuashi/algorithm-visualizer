@@ -10,7 +10,11 @@ export default class ElementBar extends Component {
     }
 
     generateRandomColor = () => {
-        return '#' + Math.round(this.props.height * 20).toString(16);
+        var red = (this.props.height % 50) ;
+        var green = (this.props.height % 150) ;
+        var blue = (this.props.height % 250) ;
+        var color = `rgb(${red}, ${green}, ${blue})`;
+        return color;
     }
 
     render() {
