@@ -40,6 +40,10 @@ function App() {
       button: {
         fontFamily: 'Work Sans',
         textTransform: 'none'
+      }, 
+      subtitle1: {
+        fontFamily: 'Work Sans',
+        textTransform: 'none'
       }
   }});
 

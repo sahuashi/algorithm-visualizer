@@ -18,10 +18,9 @@ export default class ElementBar extends Component {
     }
 
     render() {
-        let color = this.props.isSorted? "green" : this.state.color;
         return (
             <Tooltip title={this.props.height}>
-                <div className="bar" style={{height: `${this.props.height}px`, background: `${color}`}}/>
+                <div className="bar" style={{height: `${this.props.height}px`, background: `${this.state.color}`}}/>
             </Tooltip>
         )
     }
