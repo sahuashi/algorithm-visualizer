@@ -26,19 +26,11 @@ function App() {
   var updateAnimation;
 
   const algorithms = {
-    "Bubble Sort": bubbleSort,
-    "Insertion Sort": insertionSort,
-    "Merge Sort": mergeSort,
-    "Quick Sort": quickSort,
-    "Selection Sort": selectionSort
-  }
-
-  const icons = {
-    "Bubble Sort": <BubbleChartOutlinedIcon/>,
-    "Insertion Sort": <KeyboardReturnOutlinedIcon/>,
-    "Merge Sort": <MergeTypeOutlinedIcon/>,
-    "Quick Sort": <TimerOutlinedIcon/>,
-    "Selection Sort": <SwapVertOutlinedIcon/>
+    "Bubble Sort": [bubbleSort, <BubbleChartOutlinedIcon />],
+    "Insertion Sort": [insertionSort,  <KeyboardReturnOutlinedIcon />],
+    "Merge Sort": [mergeSort, <MergeTypeOutlinedIcon/>],
+    "Quick Sort": [quickSort, <TimerOutlinedIcon/>],
+    "Selection Sort": [selectionSort, <SwapVertOutlinedIcon/>]
   }
 
   const theme = createTheme({
@@ -69,7 +61,7 @@ function App() {
   const sort = () => {
     if(isSorted) return;
     setIsSorting(true);
-    let sorting = algorithms[selectedAlgorithm](array, 0, array.length-1);
+    let sorting = algorithms[selectedAlgorithm][0](array, 0, array.length-1);
     let iteration = sorting.next();
     updateAnimation = setInterval(() => {
       let arr = [...iteration.value];
@@ -93,7 +85,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
-      <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm} icons={icons}/>
+      <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
       sort={sort} isSorting={isSorting} isSorted={isSorted} stop={stop}/>
     </Container>

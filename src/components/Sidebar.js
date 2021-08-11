@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 export default class Sidebar extends Component {
   render() {
+    //{this.props.icons[Object.keys(this.props.icons)[index]]}
     return (
       <Drawer variant="permanent" anchor="left" className="drawer">
         <List>
@@ -19,8 +20,8 @@ export default class Sidebar extends Component {
           </ListItem>
           {Object.keys(this.props.algorithms).map((algo, index) => (
             <ListItem key={index} button onClick={() => this.props.setSelectedAlgorithm(algo)}>
-              {this.props.icons[Object.keys(this.props.icons)[index]]}
-              <ListItemText style={{padding: '5px'}} disableTypography primary={<Typography variant="body2">{algo}</Typography>}/>
+              <ListItemText disableTypography primary={<Typography variant="body2">{algo}</Typography>}/>
+              {this.props.algorithms[algo][1]}
             </ListItem>
           ))}
         </List>
