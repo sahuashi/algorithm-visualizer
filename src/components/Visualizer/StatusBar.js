@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
+import Box from '@material-ui/core/Box';
+import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
+import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
+import ClearOutlinedIcon from '@material-ui/icons/ClearOutlined';
 
 export default class StatusBar extends Component {
     render() {
-        var status = this.props.isSorted? "Sorted" : "Not sorted";
+        var status = <Typography variant="subtitle1">Status: {this.props.isSorted ? "Sorted" : "Not sorted"}</Typography>;
+        var icon = this.props.isSorted ? <CheckCircleOutlinedIcon /> : <ClearOutlinedIcon/>;
         return (
-            <Box p={1} mx="auto" width={1/4}>
-            <Paper elevation={3}>
-            <Typography variant="subtitle1">Status: {status}</Typography>
-            </Paper>
-          </Box>
+            <Box p={0} mx="auto">
+                <Chip icon={icon} label={status}></Chip>
+            </Box>
         )
     }
 }
