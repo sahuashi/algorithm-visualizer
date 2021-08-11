@@ -1,20 +1,40 @@
 import React, { Component } from "react";
-import { Drawer, List, ListItem, ListItemText, ListSubheader, Typography } from "@material-ui/core";
+import { Drawer, List, ListItem, ListItemText, ListSubheader } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
-export default class Sidebar extends Component {
+const styles = theme => ({
+  root: {
+    position: 'relative',
+    width: '200px',
+    whiteSpace: 'nowrap'
+  },
+  subheader: {
+    fontFamily:'Poppins'
+  },
+  category: {
+    fontFamily:'Poppins',
+  },
+  item: {
+    fontFamily: 'Poppins',
+    fontWeight: '200'
+  }
+    });
+
+class Sidebar extends Component {
   render() {
+    const { classes } = this.props;
     return (
-      <Drawer variant="permanent" anchor="left" className="drawer">
+      <Drawer variant="permanent" anchor="left" className={classes.root}>
         <List>
           <ListItem>
-            <ListSubheader>Algorithm Visualizer</ListSubheader>
+            <ListSubheader classes={{root:classes.subheader}}>Algorithm Visualizer</ListSubheader>
           </ListItem>
           <ListItem>
-            <ListItemText align="center" disableTypography primary={<Typography variant="body2">Sorting Algorithms</Typography>}/>
+          <ListItemText classes={{primary:classes.category}} align="center" primary="Sorting Algorithms"/>
           </ListItem>
           {Object.keys(this.props.algorithms).map((algo, index) => (
             <ListItem key={index} button onClick={() => this.props.setSelectedAlgorithm(algo)}>
-              <ListItemText disableTypography primary={<Typography variant="body2">{algo}</Typography>}/>
+              <ListItemText style={{textAlign:'center'}}classes={{primary:classes.item}} primary={algo}/>
               {this.props.algorithms[algo][1]}
             </ListItem>
           ))}
@@ -23,3 +43,5 @@ export default class Sidebar extends Component {
     );
   }
 }
+
+export default withStyles(styles)(Sidebar);

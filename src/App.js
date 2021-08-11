@@ -14,6 +14,7 @@ import mergeSort from "./algorithms/merge-sort";
 import quickSort from "./algorithms/quick-sort";
 import selectionSort from "./algorithms/selection-sort";
 import randomizeArray from './helpers/Randomizer';
+import '@fontsource/roboto';
 import "./App.css";
 
 function App() {

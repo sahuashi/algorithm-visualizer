@@ -4,11 +4,6 @@
   display: flex!important;
 }
 
-.drawer {
-  width: 200px;
-  position: relative;
-  white-space: nowrap;
-}
 
 .main-panel {
   text-align: center;
