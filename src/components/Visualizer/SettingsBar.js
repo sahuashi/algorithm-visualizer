@@ -11,7 +11,7 @@ export default class SettingsBar extends Component {
     return (
       <Box p={5} mx="auto" width={1/3}>
         <Paper elevation={3}>
-        <Button className="button" variant="contained" color="primary" onClick={this.props.randomize}>
+        <Button className="button blue" variant="contained" color="primary" onClick={this.props.randomize}>
           Randomize Array
         </Button>
         {sortButton}

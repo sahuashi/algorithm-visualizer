@@ -54,6 +54,7 @@ function App() {
   }
 
   const sort = () => {
+    if(isSorted) return;
     setIsSorting(true);
     let sorting = algorithms[selectedAlgorithm](array, 0, array.length-1);
     let iteration = sorting.next();
