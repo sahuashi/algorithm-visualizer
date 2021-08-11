@@ -11,6 +11,11 @@ import insertionSort from "./algorithms/insertion-sort";
 import mergeSort from "./algorithms/merge-sort";
 import quickSort from "./algorithms/quick-sort";
 import selectionSort from "./algorithms/selection-sort";
+import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
+import KeyboardReturnOutlinedIcon from '@material-ui/icons/KeyboardReturnOutlined';
+import MergeTypeOutlinedIcon from '@material-ui/icons/MergeTypeOutlined';
+import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
+import SwapVertOutlinedIcon from '@material-ui/icons/SwapVertOutlined';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App() {
@@ -26,6 +31,14 @@ function App() {
     "Merge Sort": mergeSort,
     "Quick Sort": quickSort,
     "Selection Sort": selectionSort
+  }
+
+  const icons = {
+    "Bubble Sort": <BubbleChartOutlinedIcon/>,
+    "Insertion Sort": <KeyboardReturnOutlinedIcon/>,
+    "Merge Sort": <MergeTypeOutlinedIcon/>,
+    "Quick Sort": <TimerOutlinedIcon/>,
+    "Selection Sort": <SwapVertOutlinedIcon/>
   }
 
   const theme = createTheme({
@@ -80,7 +93,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
-      <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm} />
+      <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm} icons={icons}/>
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
       sort={sort} isSorting={isSorting} isSorted={isSorted} stop={stop}/>
     </Container>
