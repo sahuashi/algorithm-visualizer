@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Box from '@material-ui/core/Box';
-import Chip from "@material-ui/core/Chip";
-import Typography from "@material-ui/core/Typography";
+import { Box, Chip, Typography } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import ClearOutlinedIcon from '@material-ui/icons/ClearOutlined';
 

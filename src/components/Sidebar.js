@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import Typography from "@material-ui/core/Typography";
+import { Drawer, List, ListItem, ListItemText, ListSubheader, Typography } from "@material-ui/core";
 
 export default class Sidebar extends Component {
   render() {
-    //{this.props.icons[Object.keys(this.props.icons)[index]]}
     return (
       <Drawer variant="permanent" anchor="left" className="drawer">
         <List>

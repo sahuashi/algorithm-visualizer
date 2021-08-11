@@ -1,22 +1,20 @@
-import "./App.css";
-import "@fontsource/roboto";
-import Typography from "@material-ui/core/Typography";
+import { useState } from 'react';
 import Container from "@material-ui/core/Container";
 import Sidebar from "./components/Sidebar";
-import Visualizer from "./components/Visualizer/Visualizer";
-import { useState } from 'react';
-import randomizeArray from './helpers/Randomizer';
-import bubbleSort from "./algorithms/bubble-sort";
-import insertionSort from "./algorithms/insertion-sort";
-import mergeSort from "./algorithms/merge-sort";
-import quickSort from "./algorithms/quick-sort";
-import selectionSort from "./algorithms/selection-sort";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import KeyboardReturnOutlinedIcon from '@material-ui/icons/KeyboardReturnOutlined';
 import MergeTypeOutlinedIcon from '@material-ui/icons/MergeTypeOutlined';
 import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
 import SwapVertOutlinedIcon from '@material-ui/icons/SwapVertOutlined';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import Visualizer from "./components/Visualizer/Visualizer";
+import bubbleSort from "./algorithms/bubble-sort";
+import insertionSort from "./algorithms/insertion-sort";
+import mergeSort from "./algorithms/merge-sort";
+import quickSort from "./algorithms/quick-sort";
+import selectionSort from "./algorithms/selection-sort";
+import randomizeArray from './helpers/Randomizer';
+import "./App.css";
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] =  useState("Bubble Sort");
@@ -35,7 +33,7 @@ function App() {
 
   const theme = createTheme({
     typography: {
-      h4: {
+      h5: {
         fontFamily: 'Poppins',
         fontWeight:'200'
       },

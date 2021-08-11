@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
+import { Paper, Box, Button } from "@material-ui/core";
 
 export default class SettingsBar extends Component {
   render() {
