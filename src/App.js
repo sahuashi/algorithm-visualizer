@@ -59,15 +59,24 @@ function App() {
 
   const sort = () => {
     if(isSorted) return;
-    setIsSorting(true);
+    //setIsSorting(true);
+    animateSorting();
+  }
+
+  const animateSorting = () => {
+    var iterations = [];
     let sorting = algorithms[selectedAlgorithm][0](array, 0, array.length-1);
     let iteration = sorting.next();
-    updateAnimation = setInterval(() => {
-      let arr = [...iteration.value];
-      console.log(iteration.value);
-      setArray(arr);
+    while(iteration.value){
+      iterations.push([...iteration.value]);
       iteration = sorting.next();
-      if (iteration.done === "true" || !iteration.value) {
+    }
+    var counter = 0;
+    updateAnimation = setInterval(() => {
+      let arr = [...iterations[counter]];
+      setArray([...arr]);
+      counter++;
+      if (counter === iterations.length) {
         clearInterval(updateAnimation);
         setIsSorting(false);
         setIsSorted(true);
