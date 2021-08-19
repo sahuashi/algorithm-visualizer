@@ -11,7 +11,8 @@ export default class Visualizer extends Component {
         <Typography variant="h5">{this.props.selectedAlgorithm}</Typography>
         <Canvas array={this.props.array}/>
         <StatusBar isSorted={this.props.isSorted}/>
-        <SettingsBar randomize={this.props.randomize} sort={this.props.sort} isSorting={this.props.isSorting} stop={this.props.stop}/>
+        <SettingsBar randomize={this.props.randomize} sort={this.props.sort} isSorting={this.props.isSorting} 
+        selectedSize={this.props.selectedSize} setSelectedSize={this.props.setSelectedSize}/>
       </Grid>
     );
   }

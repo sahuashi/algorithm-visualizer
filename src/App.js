@@ -19,7 +19,8 @@ import "./App.css";
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] =  useState("Bubble Sort");
-  const [array, setArray] = useState(randomizeArray());
+  const [selectedSize, setSelectedSize] = useState(15);
+  const [array, setArray] = useState(randomizeArray(selectedSize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   var iterations = [];
@@ -53,7 +54,7 @@ function App() {
   }});
 
   const randomize = () => {
-    let arr = randomizeArray();
+    let arr = randomizeArray(selectedSize);
     setIsSorted(false);
     setArray(arr);
   }
@@ -88,7 +89,7 @@ function App() {
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
-      sort={sort} isSorting={isSorting} isSorted={isSorted} />
+      sort={sort} isSorting={isSorting} isSorted={isSorted} setSelectedSize={setSelectedSize} selectedSize={selectedSize}/>
     </Container>
     </ThemeProvider>
   );

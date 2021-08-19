@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import { Paper, Box, Button } from "@material-ui/core";
+import { Paper, Box, Button, Slider } from "@material-ui/core";
 
 export default class SettingsBar extends Component {
+
+  handleChange = (event, value) => {
+    this.props.setSelectedSize(value);
+    this.props.randomize();
+  }
+
   render() {
     let sortButton = this.props.isSorting? 
     <Button className="button" variant="contained" disabled>Sorting...</Button> 
@@ -13,6 +19,13 @@ export default class SettingsBar extends Component {
           Randomize Array
         </Button>
         {sortButton}
+        <Slider style={{width: '70%',}}
+        defaultValue={this.props.selectedSize}
+        valueLabelDisplay="auto"
+        min={5}
+        max={25}
+        onChangeCommitted={this.handleChange}
+      />
         </Paper>
       </Box>
     );
