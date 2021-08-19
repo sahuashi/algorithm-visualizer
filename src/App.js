@@ -23,6 +23,8 @@ function App() {
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   var updateAnimation;
+  var iterations = [];
+  var counter = 0;
 
   const algorithms = {
     "Bubble Sort": [bubbleSort, <BubbleChartOutlinedIcon />],
@@ -59,29 +61,27 @@ function App() {
 
   const sort = () => {
     if(isSorted) return;
-    //setIsSorting(true);
-    animateSorting();
-  }
-
-  const animateSorting = () => {
-    var iterations = [];
+    setIsSorting(true);
     let sorting = algorithms[selectedAlgorithm][0](array, 0, array.length-1);
     let iteration = sorting.next();
     while(iteration.value){
       iterations.push([...iteration.value]);
       iteration = sorting.next();
     }
-    var counter = 0;
-    updateAnimation = setInterval(() => {
-      let arr = [...iterations[counter]];
-      setArray([...arr]);
-      counter++;
-      if (counter === iterations.length) {
-        clearInterval(updateAnimation);
-        setIsSorting(false);
-        setIsSorted(true);
-      }
-    }, 100);
+    requestAnimationFrame(animateIterations);
+  }
+  
+  const animateIterations = () => {
+    let arr = [...iterations[counter]];
+    setArray([...arr]);
+    counter++;
+    if (counter !== iterations.length) {
+      requestAnimationFrame(animateIterations);
+    }
+    else {
+      setIsSorting(false);
+      setIsSorted(true);
+    }
   }
 
   const stop = () => {
