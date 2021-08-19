@@ -22,7 +22,6 @@ function App() {
   const [array, setArray] = useState(randomizeArray());
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
-  var updateAnimation;
   var iterations = [];
   var counter = 0;
 
@@ -73,7 +72,7 @@ function App() {
   
   const animateIterations = () => {
     let arr = [...iterations[counter]];
-    setArray([...arr]);
+    setArray(arr);
     counter++;
     if (counter !== iterations.length) {
       requestAnimationFrame(animateIterations);
@@ -84,18 +83,12 @@ function App() {
     }
   }
 
-  const stop = () => {
-    console.log("ID: " + updateAnimation);
-    clearInterval(updateAnimation);
-  }
-
-
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
-      sort={sort} isSorting={isSorting} isSorted={isSorted} stop={stop}/>
+      sort={sort} isSorting={isSorting} isSorted={isSorted} />
     </Container>
     </ThemeProvider>
   );
