@@ -19,12 +19,15 @@ export default class SettingsBar extends Component {
           Randomize Array
         </Button>
         {sortButton}
-        <Slider style={{width: '70%',}}
-        value={this.props.selectedSize}
+        <Slider 
+        key={this.props.selectedSize}
+        style={{width: '70%'}}
+        defaultValue={this.props.selectedSize}
         valueLabelDisplay="auto"
         min={5}
         max={25}
         onChangeCommitted={this.handleChange}
+        disabled={this.props.isSorting}
       />
         </Paper>
       </Box>
