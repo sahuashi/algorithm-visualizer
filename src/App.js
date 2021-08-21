@@ -13,7 +13,7 @@ import insertionSort from "./algorithms/insertion-sort";
 import mergeSort from "./algorithms/merge-sort";
 import quickSort from "./algorithms/quick-sort";
 import selectionSort from "./algorithms/selection-sort";
-import randomizeArray from './helpers/Randomizer';
+import randomizeArray from './helpers/randomizer';
 import '@fontsource/roboto';
 import "./App.css";
 
@@ -24,8 +24,6 @@ function App() {
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [selectedSpeed, setSelectedSpeed] = useState(1);
-  var iterations = [];
-  var counter = 0;
 
   const algorithms = {
     "Bubble Sort": [bubbleSort, <BubbleChartOutlinedIcon />],
@@ -54,46 +52,13 @@ function App() {
       }
   }});
 
-  const randomize = () => {
-    let arr = randomizeArray(selectedSize);
-    setIsSorted(false);
-    setArray(arr);
-  }
-
-  const sort = () => {
-    if(isSorted) return;
-    setIsSorting(true);
-    let sorting = algorithms[selectedAlgorithm][0](array, 0, array.length-1);
-    let iteration = sorting.next();
-    while(iteration.value){
-      iterations.push([...iteration.value]);
-      iteration = sorting.next();
-    }
-    requestAnimationFrame(animateIterations);
-  }
-  
-  const animateIterations = () => {
-    let arr = [...iterations[counter]];
-    setArray(arr);
-    counter++;
-    if (counter !== iterations.length) {
-      setTimeout(() => {
-        requestAnimationFrame(animateIterations);
-      }, 1000 / (selectedSpeed*7));
-    }
-    else {
-      setIsSorting(false);
-      setIsSorted(true);
-    }
-  }
-
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
-      <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
-      sort={sort} isSorting={isSorting} isSorted={isSorted} setSelectedSize={setSelectedSize} 
-      selectedSize={selectedSize} setSelectedSpeed={setSelectedSpeed} selectedSpeed={selectedSpeed}/>
+      <Visualizer array={array} selectedAlgorithm={selectedAlgorithm} setArray={setArray} setIsSorted={setIsSorted}
+      isSorting={isSorting} isSorted={isSorted} setIsSorting={setIsSorting} setSelectedSize={setSelectedSize} 
+      selectedSize={selectedSize} setSelectedSpeed={setSelectedSpeed} selectedSpeed={selectedSpeed} algorithms={algorithms}/>
     </Container>
     </ThemeProvider>
   );
