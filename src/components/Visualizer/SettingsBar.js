@@ -20,7 +20,7 @@ export default class SettingsBar extends Component {
         </Button>
         {sortButton}
         <Slider style={{width: '70%',}}
-        defaultValue={this.props.selectedSize}
+        value={this.props.selectedSize}
         valueLabelDisplay="auto"
         min={5}
         max={25}
