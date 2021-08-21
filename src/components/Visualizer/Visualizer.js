@@ -12,7 +12,7 @@ export default class Visualizer extends Component {
         <Canvas array={this.props.array}/>
         <StatusBar isSorted={this.props.isSorted}/>
         <SettingsBar randomize={this.props.randomize} sort={this.props.sort} isSorting={this.props.isSorting} 
-        selectedSize={this.props.selectedSize} setSelectedSize={this.props.setSelectedSize}/>
+        selectedSize={this.props.selectedSize} setSelectedSize={this.props.setSelectedSize} setSelectedSpeed={this.props.setSelectedSpeed}/>
       </Grid>
     );
   }
