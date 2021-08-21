@@ -11,12 +11,7 @@ export default class SettingsBar extends Component {
   }
 
   handleSpeedChange = (event, speed) => {
-    //let val = parseInt(speed);
-    //console.log(this.props);
-    //console.log(this.props.selectedSpeed);
-    //alert(val);
     this.props.setSelectedSpeed(speed);
-    console.log(this.props.selectedSpeed);
   }
 
   render() {
@@ -36,9 +31,9 @@ export default class SettingsBar extends Component {
       exclusive
       onChange={this.handleSpeedChange}
     >
-      <ToggleButton value="1" disabled={this.props.isSorting}>1x</ToggleButton>
-        <ToggleButton value="2" disabled={this.props.isSorting}>2x</ToggleButton>
-        <ToggleButton value="4" disabled={this.props.isSorting}>4x</ToggleButton>
+      <ToggleButton value={1} disabled={this.props.isSorting}>1x</ToggleButton>
+        <ToggleButton value={2} disabled={this.props.isSorting}>2x</ToggleButton>
+        <ToggleButton value={4} disabled={this.props.isSorting}>4x</ToggleButton>
     </ToggleButtonGroup>
         <Typography variant="overline" display="block">Number of Elements</Typography>
         <Slider 
