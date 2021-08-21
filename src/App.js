@@ -77,7 +77,9 @@ function App() {
     setArray(arr);
     counter++;
     if (counter !== iterations.length) {
-      requestAnimationFrame(animateIterations);
+      setTimeout(() => {
+        requestAnimationFrame(animateIterations);
+      }, 250 / selectedSpeed);
     }
     else {
       setIsSorting(false);
