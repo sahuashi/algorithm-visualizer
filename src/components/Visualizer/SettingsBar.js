@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Paper, Box, Button, Slider, Typography } from "@material-ui/core";
+import { Paper, Box, Button, Slider, Typography} from "@material-ui/core";
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 export default class SettingsBar extends Component {
 
@@ -8,9 +10,13 @@ export default class SettingsBar extends Component {
     this.props.randomize();
   }
 
-  handleSpeedChange = (e) => {
-    let val = parseInt(e.currentTarget.value);
-    this.props.setSelectedSpeed(val);
+  handleSpeedChange = (event, speed) => {
+    //let val = parseInt(speed);
+    //console.log(this.props);
+    //console.log(this.props.selectedSpeed);
+    //alert(val);
+    this.props.setSelectedSpeed(speed);
+    console.log(this.props.selectedSpeed);
   }
 
   render() {
@@ -25,9 +31,15 @@ export default class SettingsBar extends Component {
         <Button className="button blue" variant="contained" color="primary" onClick={this.props.randomize} disabled={this.props.isSorting}>
           Randomize Array
         </Button>
-        <Button value="1" color="secondary" onClick={this.handleSpeedChange} disabled={this.props.isSorting}>1x</Button>
-        <Button value="2" color="primary" onClick={this.handleSpeedChange} disabled={this.props.isSorting}>2x</Button>
-        <Button value="4" onClick={this.handleSpeedChange} disabled={this.props.isSorting}>4x</Button>
+        <ToggleButtonGroup
+      value={this.props.selectedSpeed}
+      exclusive
+      onChange={this.handleSpeedChange}
+    >
+      <ToggleButton value="1" disabled={this.props.isSorting}>1x</ToggleButton>
+        <ToggleButton value="2" disabled={this.props.isSorting}>2x</ToggleButton>
+        <ToggleButton value="4" disabled={this.props.isSorting}>4x</ToggleButton>
+    </ToggleButtonGroup>
         <Typography variant="overline" display="block">Number of Elements</Typography>
         <Slider 
         key={this.props.selectedSize}

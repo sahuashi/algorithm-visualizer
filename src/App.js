@@ -23,7 +23,7 @@ function App() {
   const [array, setArray] = useState(randomizeArray(selectedSize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
-  const [selectedSpeed, setSelectedSpeed] = useState(1);
+  const [selectedSpeed, setSelectedSpeed] = useState('4');
   var iterations = [];
   var counter = 0;
 
@@ -91,7 +91,7 @@ function App() {
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
       <Visualizer array={array} randomize={randomize} selectedAlgorithm={selectedAlgorithm} 
       sort={sort} isSorting={isSorting} isSorted={isSorted} setSelectedSize={setSelectedSize} 
-      selectedSize={selectedSize} setSelectedSpeed={setSelectedSpeed}/>
+      selectedSize={selectedSize} setSelectedSpeed={setSelectedSpeed} selectedSpeed={selectedSpeed}/>
     </Container>
     </ThemeProvider>
   );
