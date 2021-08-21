@@ -17,24 +17,25 @@ export default class SettingsBar extends Component {
   render() {
     let sortButton = this.props.isSorting? 
     <Button className="button" variant="contained" disabled>Sorting...</Button> 
-    : <Button className="button" variant="contained" onClick={this.props.sort}>Sort</Button>
+    : <Button className="button" variant="contained" disableElevation onClick={this.props.sort}>Sort</Button>
     return (
       <Box p={5} mx="auto" width={1/2}>
         <Paper elevation={3}>
         <Typography variant="overline" display="block">Options</Typography>
         {sortButton}
-        <Button className="button blue" variant="contained" color="primary" onClick={this.props.randomize} disabled={this.props.isSorting}>
-          Randomize Array
-        </Button>
         <ToggleButtonGroup
       value={this.props.selectedSpeed}
       exclusive
       onChange={this.handleSpeedChange}
+      size='small'
     >
-      <ToggleButton value={1} disabled={this.props.isSorting}>1x</ToggleButton>
+      <ToggleButton value={0.5} disabled={this.props.isSorting}>0.5x</ToggleButton>
+        <ToggleButton value={1} disabled={this.props.isSorting}>1x</ToggleButton>
         <ToggleButton value={2} disabled={this.props.isSorting}>2x</ToggleButton>
-        <ToggleButton value={4} disabled={this.props.isSorting}>4x</ToggleButton>
     </ToggleButtonGroup>
+    <Button className="button blue" disableElevation variant="contained" color="primary" onClick={this.props.randomize} disabled={this.props.isSorting}>
+          Randomize Array
+        </Button>
         <Typography variant="overline" display="block">Number of Elements</Typography>
         <Slider 
         key={this.props.selectedSize}

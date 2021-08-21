@@ -23,7 +23,7 @@ function App() {
   const [array, setArray] = useState(randomizeArray(selectedSize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
-  const [selectedSpeed, setSelectedSpeed] = useState(4);
+  const [selectedSpeed, setSelectedSpeed] = useState(1);
   var iterations = [];
   var counter = 0;
 
@@ -79,7 +79,7 @@ function App() {
     if (counter !== iterations.length) {
       setTimeout(() => {
         requestAnimationFrame(animateIterations);
-      }, 250 / selectedSpeed);
+      }, 1000 / (selectedSpeed*7));
     }
     else {
       setIsSorting(false);
