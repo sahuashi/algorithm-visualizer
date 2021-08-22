@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import Canvas from "./Array/Canvas";
-import SettingsBar from "./SettingsBar";
-import StatusBar from "./StatusBar";
+import SettingsBar from "./Options/SettingsBar";
+import StatusBar from "./Options/StatusBar";
 import randomizeArray from '../../helpers/randomizer.js'
 
 export default class Visualizer extends Component {
@@ -34,7 +34,7 @@ export default class Visualizer extends Component {
     if (this.counter !== this.iterations.length) {
       setTimeout(() => {
         requestAnimationFrame(this.animateIterations);
-      }, 1000 / (this.props.selectedSpeed*7));
+      }, 1000 / (this.props.selectedSpeed*8));
     }
     else {
       this.props.setIsSorting(false);
