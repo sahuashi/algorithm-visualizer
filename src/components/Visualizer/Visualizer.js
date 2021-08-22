@@ -25,8 +25,10 @@ export default class Visualizer extends Component {
     });
   }
 
+  counter = 0;
+  iterations = [];
+
   sort = () => {
-    let iterations = [];
     if(this.state.isSorted) return;
     this.setState({
       isSorting: true
@@ -34,22 +36,21 @@ export default class Visualizer extends Component {
     let sorting = this.props.algorithms[this.props.selectedAlgorithm][0](this.state.array, 0, this.state.array.length-1);
     let iteration = sorting.next();
     while(iteration.value){
-      iterations.push([...iteration.value]);
+      this.iterations.push([...iteration.value]);
       iteration = sorting.next();
     }
-    requestAnimationFrame(this.animateIterations.bind(this, iterations));
+    requestAnimationFrame(this.animateIterations);
   }
-  
-  counter = 0;
-  animateIterations = (iterations) => {
-    let arr = [...iterations[this.counter]];
+
+  animateIterations = () => {
+    let arr = [...this.iterations[this.counter]];
     this.setState({
       array: arr
     })
     this.counter++;
-    if (this.counter !== iterations.length) {
+    if (this.counter !== this.iterations.length) {
       setTimeout(() => {
-        requestAnimationFrame(this.animateIterations.bind(this, iterations));
+        requestAnimationFrame(this.animateIterations);
       }, 1000 / (this.state.selectedSpeed*8));
     }
     else {
