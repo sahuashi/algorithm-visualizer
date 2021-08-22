@@ -13,17 +13,11 @@ import insertionSort from "./algorithms/insertionSort";
 import mergeSort from "./algorithms/mergeSort";
 import quickSort from "./algorithms/quickSort";
 import selectionSort from "./algorithms/selectionSort";
-import randomizeArray from './helpers/randomizer';
 import '@fontsource/roboto';
 import "./App.css";
 
 function App() {
   const [selectedAlgorithm, setSelectedAlgorithm] =  useState("Bubble Sort");
-  const [selectedSize, setSelectedSize] = useState(15);
-  const [array, setArray] = useState(randomizeArray(selectedSize));
-  const [isSorting, setIsSorting] = useState(false);
-  const [isSorted, setIsSorted] = useState(false);
-  const [selectedSpeed, setSelectedSpeed] = useState(1);
 
   const algorithms = {
     "Bubble Sort": [bubbleSort, <BubbleChartOutlinedIcon />],
@@ -56,9 +50,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
       <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
-      <Visualizer array={array} selectedAlgorithm={selectedAlgorithm} setArray={setArray} setIsSorted={setIsSorted}
-      isSorting={isSorting} isSorted={isSorted} setIsSorting={setIsSorting} setSelectedSize={setSelectedSize} 
-      selectedSize={selectedSize} setSelectedSpeed={setSelectedSpeed} selectedSpeed={selectedSpeed} algorithms={algorithms}/>
+      <Visualizer selectedAlgorithm={selectedAlgorithm} algorithms={algorithms}/>
     </Container>
     </ThemeProvider>
   );

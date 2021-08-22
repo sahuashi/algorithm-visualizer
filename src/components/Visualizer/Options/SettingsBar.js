@@ -6,12 +6,12 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 export default class SettingsBar extends Component {
 
   handleSizeChange = (event, value) => {
-    this.props.setSelectedSize(value);
+    this.props.handleSizeChange(value);
     this.props.randomize();
   }
 
   handleSpeedChange = (event, speed) => {
-    this.props.setSelectedSpeed(speed);
+    this.props.handleSpeedChange(speed);
   }
 
   render() {
