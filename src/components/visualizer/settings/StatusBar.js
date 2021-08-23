@@ -8,7 +8,7 @@ export default class StatusBar extends Component {
     const status = (
       <Typography variant="subtitle1">
         Status:
-        {this.props.isSorted ? 'Sorted' : 'Not sorted'}
+        {this.props.isSorted ? ' Sorted' : ' Not sorted'}
       </Typography>
     );
     const icon = this.props.isSorted ? <CheckCircleOutlineIcon style={{ color: 'white' }} /> : <ClearOutlinedIcon />;
