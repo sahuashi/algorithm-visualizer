@@ -7,7 +7,7 @@ import MergeTypeOutlinedIcon from '@material-ui/icons/MergeTypeOutlined';
 import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
 import SwapVertOutlinedIcon from '@material-ui/icons/SwapVertOutlined';
 import Sidebar from './components/Sidebar';
-import Visualizer from './components/Visualizer/Visualizer';
+import Visualizer from './components/visualizer/Visualizer';
 import bubbleSort from './algorithms/bubbleSort';
 import insertionSort from './algorithms/insertionSort';
 import mergeSort from './algorithms/mergeSort';

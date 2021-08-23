@@ -1,12 +1,16 @@
-import React, { Component } from "react";
-import { Grid, Typography } from "@material-ui/core";
-import Canvas from "./Array/Canvas";
-import SettingsBar from "./Options/SettingsBar";
-import StatusBar from "./Options/StatusBar";
-import randomizeArray from '../../helpers/randomizer.js'
+import React, { Component } from 'react';
+import { Grid, Typography } from '@material-ui/core';
+import Canvas from './canvas/Canvas';
+import SettingsBar from './settings/SettingsBar';
+import StatusBar from './settings/StatusBar';
+import randomizeArray from '../../helpers/randomizer';
 
 export default class Visualizer extends Component {
-  constructor(props){
+  counter = 0;
+
+  iterations = [];
+
+  constructor(props) {
     super(props);
     this.state = {
       isSorted: false,
@@ -14,28 +18,25 @@ export default class Visualizer extends Component {
       selectedSize: 15,
       selectedSpeed: 1,
       array: randomizeArray(15),
-    }
+    };
   }
 
   randomize = () => {
-    let arr = randomizeArray(this.state.selectedSize);
+    const arr = randomizeArray(this.state.selectedSize);
     this.setState({
       isSorted: false,
-      array: arr
+      array: arr,
     });
   }
 
-  counter = 0;
-  iterations = [];
-
   sort = () => {
-    if(this.state.isSorted) return;
+    if (this.state.isSorted) return;
     this.setState({
-      isSorting: true
-    })
-    let sorting = this.props.algorithms[this.props.selectedAlgorithm][0](this.state.array, 0, this.state.array.length-1);
+      isSorting: true,
+    });
+    const sorting = this.props.algorithms[this.props.selectedAlgorithm][0](this.state.array, 0, this.state.array.length - 1);
     let iteration = sorting.next();
-    while(iteration.value){
+    while (iteration.value) {
       this.iterations.push([...iteration.value]);
       iteration = sorting.next();
     }
@@ -43,48 +44,47 @@ export default class Visualizer extends Component {
   }
 
   animateIterations = () => {
-    let arr = [...this.iterations[this.counter]];
+    const arr = [...this.iterations[this.counter]];
     this.setState({
-      array: arr
-    })
+      array: arr,
+    });
     this.counter++;
     if (this.counter !== this.iterations.length) {
       setTimeout(() => {
         requestAnimationFrame(this.animateIterations);
-      }, 1000 / (this.state.selectedSpeed*8));
-    }
-    else {
+      }, 1000 / (this.state.selectedSpeed * 8));
+    } else {
       this.setState({
         isSorting: false,
-        isSorted: true
-      })
+        isSorted: true,
+      });
     }
   }
 
   handleSpeedChange = (speed) => {
     this.setState({
-      selectedSpeed: speed
-    })
+      selectedSpeed: speed,
+    });
   }
 
   handleSizeChange = (size) => {
     this.setState({
-      selectedSize: size
-    })
+      selectedSize: size,
+    });
   }
 
   render() {
     return (
       <Grid className="main-panel">
         <Typography variant="h5">{this.props.selectedAlgorithm}</Typography>
-        <Canvas array={this.state.array}/>
-        <StatusBar isSorted={this.state.isSorted}/>
-        <SettingsBar 
-          randomize={this.randomize} 
-          sort={this.sort} 
+        <Canvas array={this.state.array} />
+        <StatusBar isSorted={this.state.isSorted} />
+        <SettingsBar
+          randomize={this.randomize}
+          sort={this.sort}
           handleSizeChange={this.handleSizeChange}
           handleSpeedChange={this.handleSpeedChange}
-          {...this.state} 
+          {...this.state}
         />
       </Grid>
     );
