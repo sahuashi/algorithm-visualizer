@@ -8,15 +8,8 @@ const styles = theme => ({
     width: '200px',
     whiteSpace: 'nowrap'
   },
-  subheader: {
-    fontFamily:'Poppins'
-  },
-  category: {
-    fontFamily:'Poppins',
-  },
   item: {
-    fontFamily: 'Poppins',
-    fontWeight: '200'
+    fontFamily: 'Work Sans',
   }
     });
 
@@ -27,13 +20,13 @@ class Sidebar extends Component {
       <Drawer variant="permanent" anchor="left" className={classes.root}>
         <List>
           <ListItem>
-            <ListSubheader classes={{root:classes.subheader}}>Algorithm Visualizer</ListSubheader>
+            <ListSubheader classes={{root:classes.item}}>Algorithm Visualizer</ListSubheader>
           </ListItem>
           <ListItem>
-          <ListItemText classes={{primary:classes.category}} align="center" primary="Sorting Algorithms"/>
+          <ListItemText classes={{primary:classes.item}} align="center" primary="Sorting Algorithms"/>
           </ListItem>
           {Object.keys(this.props.algorithms).map((algo, index) => (
-            <ListItem key={index} button onClick={() => this.props.setSelectedAlgorithm(algo)}>
+            <ListItem key={index} button selected={this.props.selectedAlgorithm === algo} onClick={() => this.props.setSelectedAlgorithm(algo)}>
               <ListItemText style={{textAlign:'center'}}classes={{primary:classes.item}} primary={algo}/>
               {this.props.algorithms[algo][1]}
             </ListItem>

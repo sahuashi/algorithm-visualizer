@@ -49,7 +49,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="lg" className="container">
-      <Sidebar algorithms={algorithms} setSelectedAlgorithm={setSelectedAlgorithm}/>
+      <Sidebar algorithms={algorithms} selectedAlgorithm={selectedAlgorithm} setSelectedAlgorithm={setSelectedAlgorithm} />
       <Visualizer selectedAlgorithm={selectedAlgorithm} algorithms={algorithms}/>
     </Container>
     </ThemeProvider>

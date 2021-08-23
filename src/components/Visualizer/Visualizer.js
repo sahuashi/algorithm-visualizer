@@ -82,9 +82,9 @@ export default class Visualizer extends Component {
         <SettingsBar 
           randomize={this.randomize} 
           sort={this.sort} 
-          {...this.state} 
           handleSizeChange={this.handleSizeChange}
           handleSpeedChange={this.handleSpeedChange}
+          {...this.state} 
         />
       </Grid>
     );
