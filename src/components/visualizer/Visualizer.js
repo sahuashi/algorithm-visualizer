@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+
 import { Grid, Typography } from '@material-ui/core';
+
+import randomizeArray from '../../helpers/randomizer';
 import Canvas from './canvas/Canvas';
 import SettingsBar from './settings/SettingsBar';
 import StatusBar from './settings/StatusBar';
-import randomizeArray from '../../helpers/randomizer';
 
 export default class Visualizer extends Component {
   counter = 0;
@@ -80,11 +82,11 @@ export default class Visualizer extends Component {
         <Canvas array={this.state.array} />
         <StatusBar isSorted={this.state.isSorted} />
         <SettingsBar
-          randomize={this.randomize}
+          {...this.state}
           sort={this.sort}
+          randomize={this.randomize}
           handleSizeChange={this.handleSizeChange}
           handleSpeedChange={this.handleSpeedChange}
-          {...this.state}
         />
       </Grid>
     );

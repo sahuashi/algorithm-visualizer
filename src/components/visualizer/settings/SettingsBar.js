@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   Paper, Box, Button, Slider, Typography,
 } from '@material-ui/core';
@@ -24,28 +25,35 @@ export default class SettingsBar extends Component {
           <Typography variant="overline" display="block">Options</Typography>
           {sortButton}
           <ToggleButtonGroup
-            value={this.props.selectedSpeed}
-            exclusive
-            onChange={this.handleSpeedChange}
             size="small"
+            exclusive
+            value={this.props.selectedSpeed}
+            onChange={this.handleSpeedChange}
           >
             <ToggleButton value={0.5} disabled={this.props.isSorting}>0.5x</ToggleButton>
             <ToggleButton value={1} disabled={this.props.isSorting}>1x</ToggleButton>
             <ToggleButton value={2} disabled={this.props.isSorting}>2x</ToggleButton>
           </ToggleButtonGroup>
-          <Button className="button blue" disableElevation variant="contained" color="primary" onClick={this.props.randomize} disabled={this.props.isSorting}>
+          <Button
+            color="primary"
+            disableElevation
+            variant="contained"
+            className="button blue"
+            onClick={this.props.randomize}
+            disabled={this.props.isSorting}
+          >
             Randomize Array
           </Button>
           <Typography variant="overline" display="block">Number of Elements</Typography>
           <Slider
-            key={this.props.selectedSize}
-            style={{ width: '70%' }}
-            defaultValue={this.props.selectedSize}
-            valueLabelDisplay="auto"
             min={5}
             max={25}
-            onChangeCommitted={this.handleSizeChange}
+            style={{ width: '70%' }}
+            valueLabelDisplay="auto"
+            key={this.props.selectedSize}
             disabled={this.props.isSorting}
+            defaultValue={this.props.selectedSize}
+            onChangeCommitted={this.handleSizeChange}
           />
         </Paper>
       </Box>

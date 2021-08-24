@@ -1,18 +1,19 @@
 import { useState } from 'react';
-import Container from '@material-ui/core/Container';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import { Container, createTheme, ThemeProvider } from '@material-ui/core';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import KeyboardReturnOutlinedIcon from '@material-ui/icons/KeyboardReturnOutlined';
 import MergeTypeOutlinedIcon from '@material-ui/icons/MergeTypeOutlined';
-import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
 import SwapVertOutlinedIcon from '@material-ui/icons/SwapVertOutlined';
-import Sidebar from './components/Sidebar';
-import Visualizer from './components/visualizer/Visualizer';
+import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
+
 import bubbleSort from './algorithms/bubbleSort';
 import insertionSort from './algorithms/insertionSort';
 import mergeSort from './algorithms/mergeSort';
 import quickSort from './algorithms/quickSort';
 import selectionSort from './algorithms/selectionSort';
+import Sidebar from './components/Sidebar';
+import Visualizer from './components/visualizer/Visualizer';
 import '@fontsource/roboto';
 import './App.css';
 
@@ -55,7 +56,7 @@ function App() {
           selectedAlgorithm={selectedAlgorithm}
           setSelectedAlgorithm={setSelectedAlgorithm}
         />
-        <Visualizer selectedAlgorithm={selectedAlgorithm} algorithms={algorithms} />
+        <Visualizer algorithms={algorithms} selectedAlgorithm={selectedAlgorithm} />
       </Container>
     </ThemeProvider>
   );

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import { Paper, Box } from '@material-ui/core';
+
 import ElementBar from './ElementBar';
 
 export default class Canvas extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+
 import {
-  Drawer, List, ListItem, ListItemText, ListSubheader,
+  Drawer, List, ListItem, ListItemText, ListSubheader, withStyles,
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   root: {
@@ -19,22 +19,34 @@ class Sidebar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Drawer variant="permanent" anchor="left" className={classes.root}>
+      <Drawer
+        anchor="left"
+        variant="permanent"
+        className={classes.root}
+      >
         <List>
           <ListItem>
             <ListSubheader classes={{ root: classes.item }}>Algorithm Visualizer</ListSubheader>
           </ListItem>
           <ListItem>
-            <ListItemText classes={{ primary: classes.item }} align="center" primary="Sorting Algorithms" />
+            <ListItemText
+              align="center"
+              primary="Sorting Algorithms"
+              classes={{ primary: classes.item }}
+            />
           </ListItem>
           {Object.keys(this.props.algorithms).map((algo) => (
             <ListItem
-              key={algo}
               button
+              key={algo}
               selected={this.props.selectedAlgorithm === algo}
               onClick={() => this.props.setSelectedAlgorithm(algo)}
             >
-              <ListItemText style={{ textAlign: 'center' }} classes={{ primary: classes.item }} primary={algo} />
+              <ListItemText
+                align="center"
+                primary={algo}
+                classes={{ primary: classes.item }}
+              />
               {this.props.algorithms[algo][1]}
             </ListItem>
           ))}
